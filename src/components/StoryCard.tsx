@@ -24,32 +24,17 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       {/* Background overlay for readability */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/10 to-black/40 pointer-events-none z-10" />
       
-      {/* Header - Floating at top */}
-      <div className="relative z-20 pt-8 pb-4">
-        <div className="text-center">
-          <div className="flex items-center justify-center gap-3">
-            <Flower2 className="w-6 h-6 text-amber-300 drop-shadow-lg" />
-            <h1 className="text-3xl md:text-4xl font-bold text-white font-serif drop-shadow-2xl">
-              Tulipomania
-            </h1>
-            <Flower2 className="w-6 h-6 text-amber-300 drop-shadow-lg" />
-          </div>
+      {/* Story Text - Small square in left corner */}
+      <div className="absolute top-8 left-8 z-20 w-80 max-w-[calc(100vw-4rem)]">
+        <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 border border-white/20 shadow-2xl">
+          <p className="text-white text-sm leading-relaxed font-medium first-letter:text-3xl first-letter:font-bold first-letter:text-amber-300 first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:font-serif first-letter:drop-shadow-lg">
+            {story.text}
+          </p>
         </div>
       </div>
 
-      {/* Main Content Area - Centered with lots of space */}
-      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-4">
-        
-        {/* Story Text - Floating with backdrop */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <div className="bg-black/50 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-white/20 shadow-2xl">
-            <p className="text-white text-lg md:text-xl leading-relaxed font-medium text-center first-letter:text-5xl first-letter:font-bold first-letter:text-amber-300 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-serif first-letter:drop-shadow-lg">
-              {story.text}
-            </p>
-          </div>
-        </div>
-
-        {/* Choices or Ending Actions - Floating at bottom */}
+      {/* Choices or Ending Actions - Bottom center */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-2xl px-4">
         {story.isEnding ? (
           <div className="text-center">
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500/80 to-orange-500/80 backdrop-blur-sm rounded-full text-white font-medium mb-8 border border-amber-300/30 shadow-xl">
@@ -66,23 +51,20 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
             </button>
           </div>
         ) : (
-          <div className="w-full max-w-3xl space-y-4">
+          <div className="space-y-3">
             {story.choices?.map((choice, index) => (
               <button
                 key={choice.id}
                 onClick={() => onChoiceSelect(choice.nextNode)}
-                className="w-full text-left p-5 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-xl transition-all duration-300 group hover:shadow-2xl hover:scale-[1.02] transform shadow-xl"
+                className="w-full text-left p-4 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 group hover:shadow-xl hover:scale-[1.02] transform"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
-                    <span className="text-sm font-medium text-amber-300 mb-2 block">
-                      Choice {String.fromCharCode(65 + index)}
-                    </span>
-                    <p className="text-white font-medium text-base leading-relaxed">
+                    <p className="text-white font-medium text-sm leading-relaxed">
                       {choice.text}
                     </p>
                   </div>
-                  <ArrowRight className="w-6 h-6 text-amber-300 group-hover:text-amber-200 group-hover:translate-x-1 transition-all duration-200 ml-4 flex-shrink-0" />
+                  <ArrowRight className="w-5 h-5 text-amber-300 group-hover:text-amber-200 group-hover:translate-x-1 transition-all duration-200 ml-3 flex-shrink-0" />
                 </div>
               </button>
             ))}
