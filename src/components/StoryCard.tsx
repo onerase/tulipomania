@@ -14,7 +14,6 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       {/* Background Video */}
       <video
         autoPlay
-        loop
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
@@ -39,7 +38,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       </div>
 
       {/* Main Content Area - Centered with lots of space */}
-      <div className="relative z-20 flex flex-col items-center justify-center min-h-[80vh] px-4">
+      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen px-4">
         
         {/* Story Text - Floating with backdrop */}
         <div className="max-w-4xl mx-auto mb-12">
@@ -68,21 +67,18 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
           </div>
         ) : (
           <div className="w-full max-w-3xl space-y-4">
-            <h3 className="text-xl font-semibold text-white mb-8 font-serif text-center drop-shadow-lg">
-              What path will you choose?
-            </h3>
             {story.choices?.map((choice, index) => (
               <button
                 key={choice.id}
                 onClick={() => onChoiceSelect(choice.nextNode)}
-                className="w-full text-left p-6 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-xl transition-all duration-300 group hover:shadow-2xl hover:scale-[1.02] transform shadow-xl"
+                className="w-full text-left p-5 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-xl transition-all duration-300 group hover:shadow-2xl hover:scale-[1.02] transform shadow-xl"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
                     <span className="text-sm font-medium text-amber-300 mb-2 block">
                       Choice {String.fromCharCode(65 + index)}
                     </span>
-                    <p className="text-white font-medium text-lg leading-relaxed">
+                    <p className="text-white font-medium text-base leading-relaxed">
                       {choice.text}
                     </p>
                   </div>
