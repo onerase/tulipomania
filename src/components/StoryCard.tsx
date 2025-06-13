@@ -19,7 +19,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="/video/opening.mp4" type="video/mp4" />
+        <source src="https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video//opening.mp4" type="video/mp4" />
       </video>
       
       {/* Background overlay for readability */}
