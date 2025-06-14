@@ -9,16 +9,28 @@ interface StoryCardProps {
 }
 
 export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onRestart }) => {
+  // Function to get the appropriate video based on story node
+  const getVideoSource = () => {
+    // Show bloom.mp4 for the "The bulb blooms rare and beautiful" story node
+    if (story.id === 'A') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/bloom.mp4";
+    }
+    
+    // Default to opening.mp4 for all other nodes
+    return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/opening.mp4";
+  };
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background Video */}
       <video
+        key={story.id} // Force video reload when story changes
         autoPlay
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video//opening.mp4" type="video/mp4" />
+        <source src={getVideoSource()} type="video/mp4" />
       </video>
       
       {/* Background overlay for readability */}
