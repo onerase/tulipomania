@@ -61,25 +61,9 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
         </div>
       </div>
 
-      {/* Choices or Ending Actions - Bottom center */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-2xl px-4">
-        {story.isEnding ? (
-          <div className="text-center">
-            <button
-              onClick={onRestart}
-              className="w-full text-left p-4 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 group hover:shadow-xl hover:scale-[1.02] transform"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex-1">
-                  <p className="text-white font-medium text-sm leading-relaxed">
-                    Begin Again
-                  </p>
-                </div>
-                <ArrowRight className="w-5 h-5 text-amber-300 group-hover:text-amber-200 group-hover:translate-x-1 transition-all duration-200 ml-3 flex-shrink-0" />
-              </div>
-            </button>
-          </div>
-        ) : (
+      {/* Choices - Bottom center */}
+      {!story.isEnding && (
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-2xl px-4">
           <div className="space-y-3">
             {story.choices?.map((choice, index) => (
               <button
@@ -98,8 +82,23 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
               </button>
             ))}
           </div>
-        )}
-      </div>
+        </div>
+      )}
+
+      {/* Begin Again Button - Small, bottom right corner */}
+      {story.isEnding && (
+        <div className="absolute bottom-4 right-4 z-20">
+          <button
+            onClick={onRestart}
+            className="px-3 py-2 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 group hover:shadow-xl hover:scale-105 transform"
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-white font-medium text-xs">Begin Again</span>
+              <ArrowRight className="w-3 h-3 text-amber-300 group-hover:text-amber-200 group-hover:translate-x-1 transition-all duration-200" />
+            </div>
+          </button>
+        </div>
+      )}
     </div>
   );
 };
