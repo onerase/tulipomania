@@ -20,6 +20,22 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
     return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/opening.mp4";
   };
 
+  // Function to format story text with proper spacing for closing text
+  const formatStoryText = (text: string) => {
+    // Split on double newlines to separate the main story from the closing text
+    const parts = text.split('\n\n');
+    if (parts.length > 1) {
+      return (
+        <>
+          <span>{parts[0]}</span>
+          <br /><br />
+          <span className="text-amber-200 italic">{parts.slice(1).join('\n\n')}</span>
+        </>
+      );
+    }
+    return text;
+  };
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background Video */}
@@ -40,7 +56,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       <div className="absolute top-8 left-8 z-20 w-80 max-w-[calc(100vw-4rem)]">
         <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 border border-white/20 shadow-2xl">
           <p className="text-white text-sm leading-relaxed font-medium first-letter:text-3xl first-letter:font-bold first-letter:text-amber-300 first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:font-serif first-letter:drop-shadow-lg">
-            {story.text}
+            {formatStoryText(story.text)}
           </p>
         </div>
       </div>
@@ -49,17 +65,18 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-2xl px-4">
         {story.isEnding ? (
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500/80 to-orange-500/80 backdrop-blur-sm rounded-full text-white font-medium mb-8 border border-amber-300/30 shadow-xl">
-              <Flower2 className="w-5 h-5" />
-              <span>The End</span>
-              <Flower2 className="w-5 h-5" />
-            </div>
             <button
               onClick={onRestart}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-600/90 to-orange-600/90 backdrop-blur-sm text-white font-semibold rounded-xl hover:from-amber-700/90 hover:to-orange-700/90 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-amber-500/25 border border-amber-400/30"
+              className="w-full text-left p-4 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 group hover:shadow-xl hover:scale-[1.02] transform"
             >
-              Begin Again
-              <ArrowRight className="w-5 h-5" />
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <p className="text-white font-medium text-sm leading-relaxed">
+                    Begin Again
+                  </p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-amber-300 group-hover:text-amber-200 group-hover:translate-x-1 transition-all duration-200 ml-3 flex-shrink-0" />
+              </div>
             </button>
           </div>
         ) : (
