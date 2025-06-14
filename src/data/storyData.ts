@@ -284,12 +284,12 @@ export const storyData: Record<string, StoryNode> = {
     ]
   },
 
-  // Dead end nodes
+  // Dead end nodes with closing text
   A1a2: {
     id: 'A1a2',
     level: 4,
     title: 'The Mania',
-    text: 'You lock the bulb away, convinced its value will only grow. But the crash comes swiftly, and your precious bloom becomes worthless overnight.',
+    text: 'You lock the bulb away, convinced its value will only grow. But the crash comes swiftly, and your precious bloom becomes worthless overnight.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
     isEnding: true
   },
 
@@ -297,7 +297,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'A1b2',
     level: 4,
     title: 'The Mania',
-    text: 'Your bloom wins the contest, but the prize is paid in tulip bulbs just as the market crashes. Victory turns to ash.',
+    text: 'Your bloom wins the contest, but the prize is paid in tulip bulbs just as the market crashes. Victory turns to ash.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
     isEnding: true
   },
 
@@ -315,12 +315,12 @@ export const storyData: Record<string, StoryNode> = {
     ]
   },
 
-  // Level 7 - Legacy Endings
+  // Level 7 - Legacy Endings with closing text
   ending_philanthropy: {
     id: 'ending_philanthropy',
     level: 7,
     title: 'Philanthropy',
-    text: 'You dedicate your remaining fortune to helping crash victims rebuild their lives. Your legacy becomes one of generosity and redemption. Though the tulip mania brought ruin to many, your compassion lights a path forward in the darkness.',
+    text: 'You dedicate your remaining fortune to helping crash victims rebuild their lives. Your legacy becomes one of generosity and redemption. Though the tulip mania brought ruin to many, your compassion lights a path forward in the darkness.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
     isEnding: true
   },
 
@@ -328,7 +328,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'ending_preservation',
     level: 7,
     title: 'Preservation',
-    text: 'You guard your remaining wealth jealously, turning away from the suffering around you. You live out your days in lonely splendor, reviled by the masses. The tulip\'s beauty could not mask the ugliness of unchecked greed.',
+    text: 'You guard your remaining wealth jealously, turning away from the suffering around you. You live out your days in lonely splendor, reviled by the masses. The tulip\'s beauty could not mask the ugliness of unchecked greed.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
     isEnding: true
   },
 
@@ -336,7 +336,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'ending_renewal',
     level: 7,
     title: 'Renewal',
-    text: 'In a distant land, you start anew, building a modest life through hard work. You never forget the lessons of the tulip fields. Sometimes wisdom comes only through loss, and you have learned that true wealth lies not in speculation, but in honest labor.',
+    text: 'In a distant land, you start anew, building a modest life through hard work. You never forget the lessons of the tulip fields. Sometimes wisdom comes only through loss, and you have learned that true wealth lies not in speculation, but in honest labor.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
     isEnding: true
   },
 
@@ -344,7 +344,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'ending_reform',
     level: 7,
     title: 'Reform',
-    text: 'You become a leader in the movement for economic reform, fighting for a more just and stable society. Your legacy is one of activism and change. The tulip mania\'s lessons become the foundation for a better tomorrow.',
+    text: 'You become a leader in the movement for economic reform, fighting for a more just and stable society. Your legacy is one of activism and change. The tulip mania\'s lessons become the foundation for a better tomorrow.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
     isEnding: true
   }
 };
