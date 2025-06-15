@@ -11,25 +11,25 @@ export const TitlePage: React.FC<TitlePageProps> = ({ onBegin }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowButton(true);
-    }, 7000); // Show button after 7 seconds
+    }, 8000); // Show button after 8 seconds
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-black">
+    <div className="min-h-screen relative overflow-hidden bg-black flex items-center justify-center">
       {/* Background Video */}
       <video
         autoPlay
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="max-w-full max-h-full object-contain z-0"
       >
         <source src="https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/title.mp4" type="video/mp4" />
       </video>
       
-      {/* Begin Button - Appears after 7 seconds */}
+      {/* Begin Button - Appears after 8 seconds */}
       {showButton && (
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
           <button
