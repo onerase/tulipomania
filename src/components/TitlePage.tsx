@@ -29,9 +29,9 @@ export const TitlePage: React.FC<TitlePageProps> = ({ onBegin }) => {
         <source src="https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/title.mp4" type="video/mp4" />
       </video>
       
-      {/* Begin Button - Appears after 8 seconds with fade-in */}
+      {/* Begin Button - Positioned to always be visible */}
       {showButton && (
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in">
+        <div className="absolute bottom-[10vh] left-1/2 transform -translate-x-1/2 z-20 animate-fade-in">
           <button
             onClick={onBegin}
             className="px-4 py-3 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 group hover:shadow-xl hover:scale-105 transform"
