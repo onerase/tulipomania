@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Flower2, ArrowRight } from 'lucide-react';
 import { StoryNode, Choice } from '../data/storyData';
 
@@ -9,6 +9,9 @@ interface StoryCardProps {
 }
 
 export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onRestart }) => {
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [pendingChoice, setPendingChoice] = useState<string | null>(null);
+
   // Function to get the appropriate video based on story node
   const getVideoSource = () => {
     // Show bloom.mp4 for the "The bulb blooms rare and beautiful" story node
@@ -46,6 +49,39 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
     return text;
   };
 
+  // Handle choice selection with transition
+  const handleChoiceSelect = (nextNode: string) => {
+    if (isTransitioning) return; // Prevent multiple clicks during transition
+    
+    setIsTransitioning(true);
+    setPendingChoice(nextNode);
+    
+    // After transition duration, actually navigate
+    setTimeout(() => {
+      onChoiceSelect(nextNode);
+      setIsTransitioning(false);
+      setPendingChoice(null);
+    }, 500); // Match the transition duration
+  };
+
+  // Handle restart with transition
+  const handleRestart = () => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    
+    setTimeout(() => {
+      if (onRestart) onRestart();
+      setIsTransitioning(false);
+    }, 500);
+  };
+
+  // Reset transition state when story changes (for external navigation)
+  useEffect(() => {
+    setIsTransitioning(false);
+    setPendingChoice(null);
+  }, [story.id]);
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background Video */}
@@ -62,51 +98,73 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       {/* Background overlay for readability */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/10 to-black/40 pointer-events-none z-10" />
       
-      {/* Story Text - Small square in left corner */}
-      <div className="absolute top-8 left-8 z-20 w-80 max-w-[calc(100vw-4rem)]">
-        <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 border border-white/20 shadow-2xl">
-          <p className="text-white text-sm leading-relaxed font-medium first-letter:text-3xl first-letter:font-bold first-letter:text-amber-300 first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:font-serif first-letter:drop-shadow-lg">
-            {formatStoryText(story.text)}
-          </p>
-        </div>
-      </div>
-
-      {/* Choices - Bottom center */}
-      {!story.isEnding && (
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-2xl px-4">
-          <div className="space-y-3">
-            {story.choices?.map((choice, index) => (
-              <button
-                key={choice.id}
-                onClick={() => onChoiceSelect(choice.nextNode)}
-                className="w-full text-left p-4 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 group hover:shadow-xl hover:scale-[1.02] transform"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <p className="text-white font-medium text-sm leading-relaxed">
-                      {choice.text}
-                    </p>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-amber-300 group-hover:text-amber-200 group-hover:translate-x-1 transition-all duration-200 ml-3 flex-shrink-0" />
-                </div>
-              </button>
-            ))}
+      {/* Story Content Container with slide transition */}
+      <div className={`absolute inset-0 z-20 transition-transform duration-500 ease-in-out ${
+        isTransitioning ? '-translate-x-full' : 'translate-x-0'
+      }`}>
+        {/* Story Text - Small square in left corner */}
+        <div className="absolute top-8 left-8 w-80 max-w-[calc(100vw-4rem)]">
+          <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 border border-white/20 shadow-2xl">
+            <p className="text-white text-sm leading-relaxed font-medium first-letter:text-3xl first-letter:font-bold first-letter:text-amber-300 first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:font-serif first-letter:drop-shadow-lg">
+              {formatStoryText(story.text)}
+            </p>
           </div>
         </div>
-      )}
 
-      {/* Begin Again Button - Small, bottom right corner */}
-      {story.isEnding && (
-        <div className="absolute bottom-4 right-4 z-20">
-          <button
-            onClick={onRestart}
-            className="px-3 py-2 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 group hover:shadow-xl hover:scale-105 transform"
-          >
-            <div className="flex items-center gap-2">
-              <span className="text-white font-medium text-xs">Begin Again</span>
-              <ArrowRight className="w-3 h-3 text-amber-300 group-hover:text-amber-200 group-hover:translate-x-1 transition-all duration-200" />
+        {/* Choices - Bottom center */}
+        {!story.isEnding && (
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-full max-w-2xl px-4">
+            <div className="space-y-3">
+              {story.choices?.map((choice, index) => (
+                <button
+                  key={choice.id}
+                  onClick={() => handleChoiceSelect(choice.nextNode)}
+                  disabled={isTransitioning}
+                  className="w-full text-left p-4 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 group hover:shadow-xl hover:scale-[1.02] transform disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <p className="text-white font-medium text-sm leading-relaxed">
+                        {choice.text}
+                      </p>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-amber-300 group-hover:text-amber-200 group-hover:translate-x-1 transition-all duration-200 ml-3 flex-shrink-0" />
+                  </div>
+                </button>
+              ))}
             </div>
-          </button>
+          </div>
+        )}
+
+        {/* Begin Again Button - Small, bottom right corner */}
+        {story.isEnding && (
+          <div className="absolute bottom-4 right-4">
+            <button
+              onClick={handleRestart}
+              disabled={isTransitioning}
+              className="px-3 py-2 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 group hover:shadow-xl hover:scale-105 transform disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-white font-medium text-xs">Begin Again</span>
+                <ArrowRight className="w-3 h-3 text-amber-300 group-hover:text-amber-200 group-hover:translate-x-1 transition-all duration-200" />
+              </div>
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Incoming Content - slides in from the right during transition */}
+      {isTransitioning && pendingChoice && (
+        <div className={`absolute inset-0 z-30 transition-transform duration-500 ease-in-out ${
+          isTransitioning ? 'translate-x-0' : 'translate-x-full'
+        }`} style={{ transform: 'translateX(0%)' }}>
+          {/* Preview of incoming content - you could show a loading state or preview here */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-black/60 flex items-center justify-center">
+            <div className="text-white text-center">
+              <div className="w-8 h-8 border-2 border-amber-300 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+              <p className="text-sm font-medium">Loading next chapter...</p>
+            </div>
+          </div>
         </div>
       )}
     </div>
