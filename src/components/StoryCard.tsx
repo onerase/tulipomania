@@ -152,16 +152,6 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
           </div>
         )}
       </div>
-
-      {/* Loading overlay during transition */}
-      {isTransitioning && (
-        <div className="absolute inset-0 z-30 bg-black/20 backdrop-blur-sm flex items-center justify-center">
-          <div className="text-white text-center">
-            <div className="w-8 h-8 border-2 border-amber-300 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-sm font-medium opacity-80">Loading next chapter...</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
