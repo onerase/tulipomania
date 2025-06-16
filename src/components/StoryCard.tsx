@@ -21,6 +21,11 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/admire.mp4";
     }
     
+    // Show sellbulb.mp4 for the friend's fortune scene
+    if (story.id === 'C') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/sellbulb.mp4";
+    }
+    
     // Default to opening.mp4 for all other nodes
     return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/opening.mp4";
   };
