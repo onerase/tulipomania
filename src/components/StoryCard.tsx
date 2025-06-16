@@ -11,24 +11,21 @@ interface StoryCardProps {
 export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onRestart }) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [pendingChoice, setPendingChoice] = useState<string | null>(null);
-  const [nextStoryPreview, setNextStoryPreview] = useState<StoryNode | null>(null);
 
   // Function to get the appropriate video based on story node
-  const getVideoSource = (storyId?: string) => {
-    const id = storyId || story.id;
-    
+  const getVideoSource = () => {
     // Show bloom.mp4 for the "The bulb blooms rare and beautiful" story node
-    if (id === 'A') {
+    if (story.id === 'A') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/bloom.mp4";
     }
     
     // Show admire.mp4 for the garden scene
-    if (id === 'B') {
+    if (story.id === 'B') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/admire.mp4";
     }
     
     // Show sellbulb.mp4 for the friend's fortune scene
-    if (id === 'C') {
+    if (story.id === 'C') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/sellbulb.mp4";
     }
     
@@ -56,74 +53,57 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
   const handleChoiceSelect = (nextNode: string) => {
     if (isTransitioning) return; // Prevent multiple clicks during transition
     
-    // Import story data to get preview
-    import('../data/storyData').then(({ storyData, shouldRouteToCrash }) => {
-      let targetNode = nextNode;
-      if (shouldRouteToCrash(nextNode)) {
-        targetNode = 'crash';
-      }
-      
-      const nextStory = storyData[targetNode];
-      setNextStoryPreview(nextStory);
-      setIsTransitioning(true);
-      setPendingChoice(nextNode);
-      
-      // After transition duration, actually navigate
-      setTimeout(() => {
-        onChoiceSelect(nextNode);
-        setIsTransitioning(false);
-        setPendingChoice(null);
-        setNextStoryPreview(null);
-      }, 600); // Slightly longer for smoother transition
-    });
+    setIsTransitioning(true);
+    setPendingChoice(nextNode);
+    
+    // After transition duration, actually navigate
+    setTimeout(() => {
+      onChoiceSelect(nextNode);
+      setIsTransitioning(false);
+      setPendingChoice(null);
+    }, 500); // Match the transition duration
   };
 
   // Handle restart with transition
   const handleRestart = () => {
     if (isTransitioning) return;
     
-    import('../data/storyData').then(({ storyData }) => {
-      const startStory = storyData['start'];
-      setNextStoryPreview(startStory);
-      setIsTransitioning(true);
-      
-      setTimeout(() => {
-        if (onRestart) onRestart();
-        setIsTransitioning(false);
-        setNextStoryPreview(null);
-      }, 600);
-    });
+    setIsTransitioning(true);
+    
+    setTimeout(() => {
+      if (onRestart) onRestart();
+      setIsTransitioning(false);
+    }, 500);
   };
 
   // Reset transition state when story changes (for external navigation)
   useEffect(() => {
     setIsTransitioning(false);
     setPendingChoice(null);
-    setNextStoryPreview(null);
   }, [story.id]);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Current Scene - slides out to the left */}
-      <div className={`absolute inset-0 transition-transform duration-600 ease-in-out ${
+      {/* Background Video */}
+      <video
+        key={story.id} // Force video reload when story changes
+        autoPlay
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src={getVideoSource()} type="video/mp4" />
+      </video>
+      
+      {/* Background overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/10 to-black/40 pointer-events-none z-10" />
+      
+      {/* Story Content Container with slide transition */}
+      <div className={`absolute inset-0 z-20 transition-transform duration-500 ease-in-out ${
         isTransitioning ? '-translate-x-full' : 'translate-x-0'
       }`}>
-        {/* Background Video */}
-        <video
-          key={story.id} // Force video reload when story changes
-          autoPlay
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src={getVideoSource()} type="video/mp4" />
-        </video>
-        
-        {/* Background overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/10 to-black/40 pointer-events-none z-10" />
-        
         {/* Story Text - Small square in left corner */}
-        <div className="absolute top-8 left-8 z-20 w-80 max-w-[calc(100vw-4rem)]">
+        <div className="absolute top-8 left-8 w-80 max-w-[calc(100vw-4rem)]">
           <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 border border-white/20 shadow-2xl">
             <p className="text-white text-sm leading-relaxed font-medium first-letter:text-3xl first-letter:font-bold first-letter:text-amber-300 first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:font-serif first-letter:drop-shadow-lg">
               {formatStoryText(story.text)}
@@ -133,7 +113,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
 
         {/* Choices - Bottom center */}
         {!story.isEnding && (
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-2xl px-4">
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-full max-w-2xl px-4">
             <div className="space-y-3">
               {story.choices?.map((choice, index) => (
                 <button
@@ -158,7 +138,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
 
         {/* Begin Again Button - Small, bottom right corner */}
         {story.isEnding && (
-          <div className="absolute bottom-4 right-4 z-20">
+          <div className="absolute bottom-4 right-4">
             <button
               onClick={handleRestart}
               disabled={isTransitioning}
@@ -173,32 +153,16 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
         )}
       </div>
 
-      {/* Next Scene - slides in from the right */}
-      {isTransitioning && nextStoryPreview && (
-        <div className={`absolute inset-0 transition-transform duration-600 ease-in-out ${
+      {/* Incoming Content - slides in from the right during transition */}
+      {isTransitioning && pendingChoice && (
+        <div className={`absolute inset-0 z-30 transition-transform duration-500 ease-in-out ${
           isTransitioning ? 'translate-x-0' : 'translate-x-full'
-        }`}>
-          {/* Background Video for next scene */}
-          <video
-            key={`next-${nextStoryPreview.id}`}
-            autoPlay
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover z-0"
-          >
-            <source src={getVideoSource(nextStoryPreview.id)} type="video/mp4" />
-          </video>
-          
-          {/* Background overlay for readability */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/10 to-black/40 pointer-events-none z-10" />
-          
-          {/* Loading indicator */}
-          <div className="absolute inset-0 z-20 flex items-center justify-center">
-            <div className="bg-black/60 backdrop-blur-md rounded-xl p-6 border border-white/20 shadow-2xl">
-              <div className="text-white text-center">
-                <div className="w-8 h-8 border-2 border-amber-300 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                <p className="text-sm font-medium">Loading next chapter...</p>
-              </div>
+        }`} style={{ transform: 'translateX(0%)' }}>
+          {/* Preview of incoming content - you could show a loading state or preview here */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-black/60 flex items-center justify-center">
+            <div className="text-white text-center">
+              <div className="w-8 h-8 border-2 border-amber-300 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+              <p className="text-sm font-medium">Loading next chapter...</p>
             </div>
           </div>
         </div>
