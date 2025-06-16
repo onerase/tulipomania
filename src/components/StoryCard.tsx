@@ -61,7 +61,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       onChoiceSelect(nextNode);
       setIsTransitioning(false);
       setPendingChoice(null);
-    }, 500); // Match the transition duration
+    }, 400); // Slightly faster for fade
   };
 
   // Handle restart with transition
@@ -73,7 +73,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
     setTimeout(() => {
       if (onRestart) onRestart();
       setIsTransitioning(false);
-    }, 500);
+    }, 400);
   };
 
   // Reset transition state when story changes (for external navigation)
@@ -98,9 +98,9 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       {/* Background overlay for readability */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/10 to-black/40 pointer-events-none z-10" />
       
-      {/* Story Content Container with slide transition */}
-      <div className={`absolute inset-0 z-20 transition-transform duration-500 ease-in-out ${
-        isTransitioning ? '-translate-x-full' : 'translate-x-0'
+      {/* Story Content Container with fade transition */}
+      <div className={`absolute inset-0 z-20 transition-opacity duration-400 ease-in-out ${
+        isTransitioning ? 'opacity-0' : 'opacity-100'
       }`}>
         {/* Story Text - Small square in left corner */}
         <div className="absolute top-8 left-8 w-80 max-w-[calc(100vw-4rem)]">
@@ -153,17 +153,12 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
         )}
       </div>
 
-      {/* Incoming Content - slides in from the right during transition */}
-      {isTransitioning && pendingChoice && (
-        <div className={`absolute inset-0 z-30 transition-transform duration-500 ease-in-out ${
-          isTransitioning ? 'translate-x-0' : 'translate-x-full'
-        }`} style={{ transform: 'translateX(0%)' }}>
-          {/* Preview of incoming content - you could show a loading state or preview here */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-black/60 flex items-center justify-center">
-            <div className="text-white text-center">
-              <div className="w-8 h-8 border-2 border-amber-300 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-              <p className="text-sm font-medium">Loading next chapter...</p>
-            </div>
+      {/* Loading overlay during transition */}
+      {isTransitioning && (
+        <div className="absolute inset-0 z-30 bg-black/20 backdrop-blur-sm flex items-center justify-center">
+          <div className="text-white text-center">
+            <div className="w-8 h-8 border-2 border-amber-300 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-sm font-medium opacity-80">Loading next chapter...</p>
           </div>
         </div>
       )}
