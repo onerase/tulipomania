@@ -11,7 +11,7 @@ export const TitlePage: React.FC<TitlePageProps> = ({ onBegin }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowButton(true);
-    }, 8000); // Show button after 8 seconds
+    }, 3000); // Show button after 3 seconds
 
     return () => clearTimeout(timer);
   }, []);
