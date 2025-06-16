@@ -19,6 +19,11 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/bloom.mp4";
     }
     
+    // Show envy.mp4 for the regret and greed story node
+    if (story.id === 'A1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/envy.mp4";
+    }
+    
     // Show admire.mp4 for the garden scene
     if (story.id === 'B') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/admire.mp4";
