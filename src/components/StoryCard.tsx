@@ -29,6 +29,11 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A1a.mp4";
     }
     
+    // Show A1a1.mp4 for the A1a1 story node
+    if (story.id === 'A1a1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A1a1.mp4";
+    }
+    
     // Show admire.mp4 for the garden scene
     if (story.id === 'B') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/admire.mp4";
