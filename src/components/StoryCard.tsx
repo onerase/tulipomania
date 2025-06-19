@@ -42,6 +42,9 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
     // Default to opening.mp4 for all other nodes
     return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/opening.mp4";
   };
+    if (story.id === 'A1a1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A1a1.mp4";
+  };
 
   // Function to format story text with proper spacing for closing text
   const formatStoryText = (text: string) => {
