@@ -133,7 +133,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'A1a',
     level: 4,
     title: 'The Mania',
-    text: 'You use everythign you have and secure the coveted flower, but the price is staggering, a sum that would purchase a fine house on the canal. Even amid the general frenzy, there are murmurs that you\'ve overextended yourself. The tulip sits in your vault like a ticking bomb, its value tied to the caprice of the crowd.',
+    text: 'You use everythign you have and secure the coveted flower, but the price is staggering, a sum that would purchase a fine house on the canal. Even amid the general frenzy, there are murmurs that you\'ve overextended yourself. The tulip never leaves your sight, you are soaked with fear.',
     choices: [
       { id: 'A1a1', text: 'Flip the bulb immediately to capitalize on the hype', nextNode: 'A1a1' },
       { id: 'A1a2', text: 'Lock it away, sure that its value will only grow', nextNode: 'A1a2' }
