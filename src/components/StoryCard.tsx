@@ -14,6 +14,11 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
 
   // Function to get the appropriate video based on story node
   const getVideoSource = () => {
+    // Show crash.mp4 for the crash scene
+    if (story.id === 'crash') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/crash.mp4";
+    }
+    
     // Show bloom.mp4 for the "The bulb blooms rare and beautiful" story node
     if (story.id === 'A') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/bloom.mp4";
