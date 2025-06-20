@@ -505,7 +505,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'ending_philanthropy',
     level: 7,
     title: 'The Philanthropist',
-    text: 'You dedicate your fortune to founding schools, almshouses, and hospitals, determined to extract some lasting good from the tulip craze. Your name becomes synonymous with generosity and civic virtue, spoken with reverence by the grateful poor. In the end, this becomes your true legacy: not the wealth you accumulated, but the lives you touched.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
+    text: 'You dedicate your fortune to founding schools, almshouses, and hospitals, determined to extract some lasting good from the tulip craze. Your name becomes synonymous with generosity and civic virtue, spoken with reverence by the grateful poor. In the end, this becomes your true legacy: not the wealth you accumulated, but the lives you touched.',
     isEnding: true
   },
 
