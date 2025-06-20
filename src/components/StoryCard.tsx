@@ -118,59 +118,63 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       {/* Background overlay for readability - Enhanced darkness */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70 pointer-events-none z-10" />
       
-      {/* Story Content Container with fade transition */}
-      <div className={`absolute inset-0 z-20 transition-opacity duration-400 ease-in-out ${
+      {/* Story Content Container with fade transition - Now using flex layout */}
+      <div className={`relative z-20 min-h-screen flex flex-col justify-between p-4 md:p-8 transition-opacity duration-400 ease-in-out ${
         isTransitioning ? 'opacity-0' : 'opacity-100'
       }`}>
-        {/* Story Text - Responsive positioning and sizing with improved readability */}
-        <div className="absolute top-4 md:top-8 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] md:w-80 max-w-lg px-4 md:px-0">
-          <div className="bg-black/80 backdrop-blur-md rounded-xl p-6 md:p-8 border border-white/20 shadow-2xl max-h-[40vh] overflow-y-auto">
-            <p className="text-white text-xs md:text-sm leading-relaxed font-medium first-letter:text-2xl md:first-letter:text-3xl first-letter:font-bold first-letter:text-amber-300 first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:font-serif first-letter:drop-shadow-lg">
+        
+        {/* Story Text - Full width at top, no scrolling */}
+        <div className="w-full max-w-4xl mx-auto">
+          <div className="bg-black/80 backdrop-blur-md rounded-xl p-6 md:p-8 border border-white/20 shadow-2xl">
+            <p className="text-white text-sm md:text-base leading-relaxed font-medium first-letter:text-3xl md:first-letter:text-4xl first-letter:font-bold first-letter:text-amber-300 first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:font-serif first-letter:drop-shadow-lg">
               {formatStoryText(story.text)}
             </p>
           </div>
         </div>
 
-        {/* Choices - Bottom center with improved mobile layout and enhanced visibility */}
-        {!story.isEnding && (
-          <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 w-full max-w-lg px-4">
-            <div className="space-y-2 md:space-y-3">
-              {story.choices?.map((choice, index) => (
-                <button
-                  key={choice.id}
-                  onClick={() => handleChoiceSelect(choice.nextNode)}
-                  disabled={isTransitioning}
-                  className="w-full text-left p-3 md:p-4 bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 group hover:shadow-xl hover:scale-[1.02] transform disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <p className="text-white font-medium text-xs md:text-sm leading-relaxed">
-                        {choice.text}
-                      </p>
+        {/* Bottom section for choices and restart button */}
+        <div className="flex flex-col items-center space-y-4 md:space-y-8">
+          {/* Choices - Bottom center with improved mobile layout and enhanced visibility */}
+          {!story.isEnding && (
+            <div className="w-full max-w-lg">
+              <div className="space-y-2 md:space-y-3">
+                {story.choices?.map((choice, index) => (
+                  <button
+                    key={choice.id}
+                    onClick={() => handleChoiceSelect(choice.nextNode)}
+                    disabled={isTransitioning}
+                    className="w-full text-left p-3 md:p-4 bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 group hover:shadow-xl hover:scale-[1.02] transform disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1">
+                        <p className="text-white font-medium text-xs md:text-sm leading-relaxed">
+                          {choice.text}
+                        </p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-amber-300 group-hover:text-amber-200 group-hover:translate-x-1 transition-all duration-200 ml-3 flex-shrink-0" />
                     </div>
-                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-amber-300 group-hover:text-amber-200 group-hover:translate-x-1 transition-all duration-200 ml-3 flex-shrink-0" />
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Begin Again Button - Small, bottom right corner */}
-        {story.isEnding && (
-          <div className="absolute bottom-4 right-4">
-            <button
-              onClick={handleRestart}
-              disabled={isTransitioning}
-              className="px-3 py-2 bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 group hover:shadow-xl hover:scale-105 transform disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <div className="flex items-center gap-2">
-                <span className="text-white font-medium text-xs">Begin Again</span>
-                <ArrowRight className="w-3 h-3 text-amber-300 group-hover:text-amber-200 group-hover:translate-x-1 transition-all duration-200" />
+                  </button>
+                ))}
               </div>
-            </button>
-          </div>
-        )}
+            </div>
+          )}
+
+          {/* Begin Again Button - Centered at bottom for endings */}
+          {story.isEnding && (
+            <div className="w-full max-w-lg text-right">
+              <button
+                onClick={handleRestart}
+                disabled={isTransitioning}
+                className="px-4 py-3 bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 group hover:shadow-xl hover:scale-105 transform disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-white font-medium text-sm">Begin Again</span>
+                  <ArrowRight className="w-4 h-4 text-amber-300 group-hover:text-amber-200 group-hover:translate-x-1 transition-all duration-200" />
+                </div>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
