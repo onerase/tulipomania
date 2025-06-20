@@ -492,7 +492,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'crash',
     level: 6,
     title: 'The Crash',
-    text: 'February 3, 1637. The bottom falls out of the tulip market. Prices plummet a thousandfold overnight. Fortunes evaporate, turning princes into paupers. The taverns echo with tales of ruin and despair, of lives destroyed by a flower\'s fickle beauty. In the cold light of dawn, as an empire of illusions crumbles, you must choose your path forward...',
+    text: 'February, 1637. The bottom falls out of the tulip market. Prices plummet a thousandfold overnight. Fortunes evaporate, turning princes into paupers. The taverns echo with tales of ruin and despair, of lives destroyed by a flower\'s fickle beauty. In the cold light of dawn, as an empire of illusions crumbles, you must choose your path forward...',
     choices: [
       { id: 'ending_philanthropy', text: 'Use your fortune to ease the suffering of the crash\'s victims', nextNode: 'ending_philanthropy' },
       { id: 'ending_preservation', text: 'Double down on your wealth, insulating yourself from the world\'s woes', nextNode: 'ending_preservation' },
