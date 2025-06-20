@@ -19,7 +19,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'start',
     level: 1,
     title: 'The Spark',
-    text: 'In the golden age of the Dutch Republic, a ship glides into Haarlem\'s harbor, its hold laden with a precious cargo - tulip bulbs from the Ottoman Empire. These exotic blooms, with their vibrant petals and rare beauty, are unlike anything the Dutch have ever seen. As whispers of their splendor spread through the cobblestone streets, the city is poised on the brink of an extraordinary obsession. In this moment, standing at the crossroads of history, you must choose your path. Will you succumb to the allure of the tulip, or resist the siren call of speculation?',
+    text: 'In the golden age of the Dutch Republic, a ship glides into Haarlem\'s harbor, its hold laden with a precious cargo - tulip bulbs from the Ottoman Empire. These exotic blooms, with their vibrant petals and rare beauty, are unlike anything the Dutch have ever seen. As whispers of their splendor spread through the cobblestone streets, the city is poised on the brink of an extraordinary obsession.',
     choices: [
       { id: 'A', text: 'Buy a single tulip bulb — a cautious start', nextNode: 'A' },
       { id: 'B', text: 'Plant a full tulip garden — go all in', nextNode: 'B' },
