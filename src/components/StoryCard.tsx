@@ -122,18 +122,18 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       <div className={`absolute inset-0 z-20 transition-opacity duration-400 ease-in-out ${
         isTransitioning ? 'opacity-0' : 'opacity-100'
       }`}>
-        {/* Story Text - Right-aligned positioning */}
-        <div className="absolute top-4 md:top-8 right-4 md:right-8 w-[calc(50%-2rem)] md:w-80 max-w-md">
-          <div className="bg-black/80 backdrop-blur-md rounded-xl p-6 md:p-8 border border-white/20 shadow-2xl max-h-[40vh] overflow-y-auto">
+        {/* Story Text - Right-aligned with original width */}
+        <div className="absolute top-4 md:top-8 right-4 md:right-8 w-[calc(100%-2rem)] md:w-80 max-w-md px-4 md:px-0">
+          <div className="bg-black/80 backdrop-blur-md rounded-xl p-4 md:p-6 border border-white/20 shadow-2xl max-h-[40vh] overflow-y-auto">
             <p className="text-white text-xs md:text-sm leading-relaxed font-medium first-letter:text-2xl md:first-letter:text-3xl first-letter:font-bold first-letter:text-amber-300 first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:font-serif first-letter:drop-shadow-lg">
               {formatStoryText(story.text)}
             </p>
           </div>
         </div>
 
-        {/* Choices - Right-aligned bottom positioning */}
+        {/* Choices - Right-aligned with original width */}
         {!story.isEnding && (
-          <div className="absolute bottom-4 md:bottom-8 right-4 md:right-8 w-[calc(50%-2rem)] md:w-80 max-w-md">
+          <div className="absolute bottom-4 md:bottom-8 right-4 md:right-8 w-full max-w-lg px-4">
             <div className="space-y-2 md:space-y-3">
               {story.choices?.map((choice, index) => (
                 <button
