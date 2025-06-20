@@ -115,15 +115,15 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
         <source src={getVideoSource()} type="video/mp4" />
       </video>
       
-      {/* Background overlay for readability - Enhanced darkness */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70 pointer-events-none z-10" />
+      {/* Background overlay for readability - Right-side focused gradient */}
+      <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/30 to-transparent pointer-events-none z-10" />
       
       {/* Story Content Container with fade transition */}
       <div className={`absolute inset-0 z-20 transition-opacity duration-400 ease-in-out ${
         isTransitioning ? 'opacity-0' : 'opacity-100'
       }`}>
-        {/* Story Text - Responsive positioning and sizing with improved readability */}
-        <div className="absolute top-4 md:top-8 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] md:w-80 max-w-lg px-4 md:px-0">
+        {/* Story Text - Right-aligned positioning */}
+        <div className="absolute top-4 md:top-8 right-4 md:right-8 w-[calc(50%-2rem)] md:w-80 max-w-md">
           <div className="bg-black/80 backdrop-blur-md rounded-xl p-6 md:p-8 border border-white/20 shadow-2xl max-h-[40vh] overflow-y-auto">
             <p className="text-white text-xs md:text-sm leading-relaxed font-medium first-letter:text-2xl md:first-letter:text-3xl first-letter:font-bold first-letter:text-amber-300 first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:font-serif first-letter:drop-shadow-lg">
               {formatStoryText(story.text)}
@@ -131,9 +131,9 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
           </div>
         </div>
 
-        {/* Choices - Bottom center with improved mobile layout and enhanced visibility */}
+        {/* Choices - Right-aligned bottom positioning */}
         {!story.isEnding && (
-          <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 w-full max-w-lg px-4">
+          <div className="absolute bottom-4 md:bottom-8 right-4 md:right-8 w-[calc(50%-2rem)] md:w-80 max-w-md">
             <div className="space-y-2 md:space-y-3">
               {story.choices?.map((choice, index) => (
                 <button
@@ -156,7 +156,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
           </div>
         )}
 
-        {/* Begin Again Button - Small, bottom right corner */}
+        {/* Begin Again Button - Bottom right corner */}
         {story.isEnding && (
           <div className="absolute bottom-4 right-4">
             <button
