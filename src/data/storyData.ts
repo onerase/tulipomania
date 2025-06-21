@@ -443,7 +443,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'A1a2',
     level: 4,
     title: 'The Mania',
-    text: 'You lock the bulb away, convinced its value will only grow. But February, 1637. The bottom falls out of the tulip market. Prices plummet a thousandfold overnight. Fortunes evaporate, turning princes into paupers. You lose everything.',
+    text: 'You lock the bulb away, convinced its value will only grow. Butthen February, 1637... The bottom falls out of the tulip market. Prices plummet a thousandfold overnight. Fortunes evaporate, turning princes into paupers. You lose everything.',
     isEnding: true
   },
 
