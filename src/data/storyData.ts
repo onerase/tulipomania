@@ -166,7 +166,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'A2b',
     level: 4,
     title: 'The Mania',
-    text: 'The collector meets you in a back alley, cloaked and furtive. The exchange is made in whispers, the bulb passing hands like contraband. But the next day, the collector is nowhere to be found, vanished like a thief in the night. Panic seizes you as you realize you\'ve been swindled.',
+    text: 'The collector meets you in a back alley, cloaked and furtive. With a handshake and a whispered exchange, the bulb passes from your hand to his. But as you count the coins by the dim light of a lantern, a chill runs down your spine. The gold is fake, nothing more than gilded lead. You look up to confront the swindler, but he\'s already gone, melted into the shadows like a specter. Your prize bulb, the result of months of painstaking cultivation, is lost to a moment\'s greed and gullibility.,
     choices: [
       { id: 'A2b1', text: 'Hire mercenaries to track them down at any cost', nextNode: 'A2b1' },
       { id: 'A2b2', text: 'Start over, keeping your new attempts secret', nextNode: 'A2b2' }
