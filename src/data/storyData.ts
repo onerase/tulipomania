@@ -155,7 +155,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'A2a',
     level: 4,
     title: 'The Mania',
-    text: 'Your trumpeting of the bulb\'s rarity unleashes a frenzy of desire. Collectors flock from all over Europe, each determined to possess this botanical wonder. Bidding wars erupt in the coffeehouses and salons, driving the price to dizzying heights.',
+    text: 'Your tales of the bulb\'s rare beauty spread like wildfire through the city\'s salons and coffeehouses. Collectors and connoisseurs descend upon your doorstep, their eyes gleaming with desire. In smoky backrooms and gilded parlors, bidding wars erupt, driving prices to dizzying heights. Fortunes are won and lost on the turn of a petal as your creation becomes a prize more precious than gold. At the center of this swirling vortex of greed and obsession, you face a choice:',
     choices: [
       { id: 'A2a1', text: 'Stoke desire by releasing only a few bulbs at a time', nextNode: 'A2a1' },
       { id: 'A2a2', text: 'Claim divine blessing for your flowers, starting a cult', nextNode: 'A2a2' }
