@@ -24,6 +24,11 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/ending_philanthropy.mp4";
     }
     
+    // Show A1a2.mp4 for the A1a2 story node
+    if (story.id === 'A1a2') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A1a2.mp4";
+    }
+    
     // Show bloom.mp4 for the "The bulb blooms rare and beautiful" story node
     if (story.id === 'A') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/bloom.mp4";
