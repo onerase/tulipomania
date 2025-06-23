@@ -64,9 +64,29 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/admire.mp4";
     }
     
+    // Show B1.mp4 for the B1 story node
+    if (story.id === 'B1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B1.mp4";
+    }
+    
+    // Show B2.mp4 for the B2 story node
+    if (story.id === 'B2') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B2.mp4";
+    }
+    
     // Show sellbulb.mp4 for the friend's fortune scene
     if (story.id === 'C') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/sellbulb.mp4";
+    }
+    
+    // Show C1.mp4 for the C1 story node
+    if (story.id === 'C1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C1.mp4";
+    }
+    
+    // Show C2.mp4 for the C2 story node
+    if (story.id === 'C2') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C2.mp4";
     }
     
     // Default to opening.mp4 for all other nodes
