@@ -34,6 +34,11 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A2a.mp4";
     }
     
+    // Show A2b.mp4 for the A2b story node
+    if (story.id === 'A2b') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A2b.mp4";
+    }
+    
     // Show bloom.mp4 for the "The bulb blooms rare and beautiful" story node
     if (story.id === 'A') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/bloom.mp4";
@@ -69,14 +74,39 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B1.mp4";
     }
     
+    // Show B1a.mp4 for the B1a story node
+    if (story.id === 'B1a') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B1a.mp4";
+    }
+    
+    // Show B1b.mp4 for the B1b story node
+    if (story.id === 'B1b') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B1b.mp4";
+    }
+    
     // Show B2.mp4 for the B2 story node
     if (story.id === 'B2') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B2.mp4";
     }
     
+    // Show B2a.mp4 for the B2a story node
+    if (story.id === 'B2a') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B2a.mp4";
+    }
+    
     // Show sellbulb.mp4 for the friend's fortune scene
     if (story.id === 'C') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/sellbulb.mp4";
+    }
+    
+    // Show C1.mp4 for the C1a story node
+    if (story.id === 'C1a') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C1.mp4";
+    }
+    
+    // Show C1b.mp4 for the C1b story node
+    if (story.id === 'C1b') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C1b.mp4";
     }
     
     // Show C1.mp4 for the C1 story node
@@ -87,6 +117,11 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
     // Show C2.mp4 for the C2 story node
     if (story.id === 'C2') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C2.mp4";
+    }
+    
+    // Show C2a.mp4 for the C2a story node
+    if (story.id === 'C2a') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C2a.mp4";
     }
     
     // Default to opening.mp4 for all other nodes
