@@ -177,7 +177,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'B1a',
     level: 4,
     title: 'The Mania',
-    text: 'The guilders pour in, a golden flood that seems to have no end. But your elation turns to ashes when the buyer, a lavish spendthrift of a noble, defaults on the payment. His fortune, it seems, was as ephemeral as the tulip craze itself.',
+    text: 'The guilders pour in, a golden flood that seems to have no end. But your elation turns to ashes when the buyer, a lavish spendthrift of a noble, defaults on the last payment. His fortune, it seems, was as ephemeral as the tulip craze itself.',
     choices: [
       { id: 'B1a1', text: 'Reclaim the bulbs as collateral on the noble\'s debt', nextNode: 'B1a1' },
       { id: 'B1a2', text: 'Sue for a share of the noble\'s estate to recoup the cost', nextNode: 'B1a2' }
