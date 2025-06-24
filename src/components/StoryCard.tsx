@@ -59,9 +59,29 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A1a1.mp4";
     }
     
+    // Show A1b1.mp4 for the A1b1 story node
+    if (story.id === 'A1b1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A1b1.mp4";
+    }
+    
+    // Show A1b2.mp4 for the A1b2 story node
+    if (story.id === 'A1b2') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A1b2.mp4";
+    }
+    
     // Show A2.mp4 for both A2 and A1b story nodes (breeding storylines)
     if (story.id === 'A2' || story.id === 'A1b') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A2.mp4";
+    }
+    
+    // Show B1.mp4 for the A2a1 story node
+    if (story.id === 'A2a1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B1.mp4";
+    }
+    
+    // Show A2a2.mp4 for the A2a2 story node
+    if (story.id === 'A2a2') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A2a2.mp4";
     }
     
     // Show admire.mp4 for the garden scene
@@ -99,6 +119,11 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/sellbulb.mp4";
     }
     
+    // Show C1.mp4 for the C1 story node
+    if (story.id === 'C1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C1.mp4";
+    }
+    
     // Show C1.mp4 for the C1a story node
     if (story.id === 'C1a') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C1.mp4";
@@ -107,11 +132,6 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
     // Show C1b.mp4 for the C1b story node
     if (story.id === 'C1b') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C1b.mp4";
-    }
-    
-    // Show C1.mp4 for the C1 story node
-    if (story.id === 'C1') {
-      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C1.mp4";
     }
     
     // Show C2.mp4 for the C2 story node
@@ -124,8 +144,19 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C2a.mp4";
     }
     
+    // Show C2b.mp4 for the C2b story node
+    if (story.id === 'C2b') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C2b.mp4";
+    }
+    
     // Default to opening.mp4 for all other nodes
     return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/opening.mp4";
+  };
+
+  // Function to determine if video should loop
+  const shouldVideoLoop = () => {
+    // Only C2b should loop
+    return story.id === 'C2b';
   };
 
   // Function to format story text with proper spacing for closing text
@@ -184,6 +215,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
         key={story.id} // Force video reload when story changes
         autoPlay
         muted
+        loop={shouldVideoLoop()}
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
