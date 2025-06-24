@@ -451,7 +451,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'A1b2',
     level: 4,
     title: 'The Mania',
-    text: 'Your bloom wins the contest, but the prize is paid in tulip bulbs just as the market crashes. Victory turns to ash.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
+    text: 'Your bloom wins the contest, and the prize is paid in tulip bulbs. Unfortunately its February, 1637. The bottom falls out of the tulip market. Prices plummet a thousandfold overnight. Fortunes evaporate, turning princes into paupers. Victory turns to ash.',
     isEnding: true
   },
 
