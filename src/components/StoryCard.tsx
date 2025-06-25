@@ -139,6 +139,21 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B2a1.mp4";
     }
     
+    // Show B2b.mp4 for the B2b story node
+    if (story.id === 'B2b') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B2b.mp4";
+    }
+    
+    // Show B2b1.mp4 for the B2b1 story node
+    if (story.id === 'B2b1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B2b1.mp4";
+    }
+    
+    // Show B2b2.mp4 for the B2b2 story node
+    if (story.id === 'B2b2') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B2b2.mp4";
+    }
+    
     // Show sellbulb.mp4 for the friend's fortune scene
     if (story.id === 'C') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/sellbulb.mp4";
@@ -159,6 +174,11 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C1b.mp4";
     }
     
+    // Show C1b1.mp4 for the C1b1 story node
+    if (story.id === 'C1b1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C1b1.mp4";
+    }
+    
     // Show C2.mp4 for the C2 story node
     if (story.id === 'C2') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C2.mp4";
@@ -167,6 +187,11 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
     // Show C2a.mp4 for the C2a story node
     if (story.id === 'C2a') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C2a.mp4";
+    }
+    
+    // Show C2a1.mp4 for the C2a1 story node
+    if (story.id === 'C2a1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C2a1.mp4";
     }
     
     // Show C2b.mp4 for the C2b story node
@@ -180,7 +205,7 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
 
   // Function to determine if video should loop
   const shouldVideoLoop = () => {
-    // Only C2b should loop
+    // Only C2b should loop indefinitely
     return story.id === 'C2b';
   };
 
