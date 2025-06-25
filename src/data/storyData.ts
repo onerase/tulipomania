@@ -409,7 +409,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'C2a1',
     level: 5,
     title: 'The Peak',
-    text: 'Your prescience pays off. As the tulip market implodes, your investments in land and art hold steady. You watch from the sidelines as the speculators and dupes are ruined, their wails of despair music to your ears. You\'ve beaten the game by refusing to play.',
+    text: 'Your prescience pays off. As the tulip market implodes, your investments in land and art hold steady. You watch from the sidelines as the speculators and dupes are ruined, their wails of despair music to your ears. You\'ve beaten the game.',
     choices: [
       { id: 'C2a1a', text: 'Expand your holdings, buying up distressed assets for a song', nextNode: 'C2a1a' },
       { id: 'C2a1b', text: 'Withdraw from the world of finance, content with your lot', nextNode: 'C2a1b' }
