@@ -39,6 +39,11 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A2b.mp4";
     }
     
+    // Show A2b1.mp4 for the A2b1 story node
+    if (story.id === 'A2b1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A2b1.mp4";
+    }
+    
     // Show bloom.mp4 for the "The bulb blooms rare and beautiful" story node
     if (story.id === 'A') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/bloom.mp4";
@@ -99,9 +104,24 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B1a.mp4";
     }
     
+    // Show B1a1.mp4 for the B1a1 story node
+    if (story.id === 'B1a1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B1a1.mp4";
+    }
+    
     // Show B1b.mp4 for the B1b story node
     if (story.id === 'B1b') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B1b.mp4";
+    }
+    
+    // Show B1b1.mp4 for the B1b1 story node
+    if (story.id === 'B1b1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B1b1.mp4";
+    }
+    
+    // Show B1b2.mp4 for the B1b2 story node
+    if (story.id === 'B1b2') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B1b2.mp4";
     }
     
     // Show B2.mp4 for the B2 story node
