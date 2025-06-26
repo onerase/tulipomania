@@ -110,6 +110,11 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B1a1.mp4";
     }
     
+    // Show B1a2.mp4 for the B1a2 story node
+    if (story.id === 'B1a2') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B1a2.mp4";
+    }
+    
     // Show B1b.mp4 for the B1b story node
     if (story.id === 'B1b') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/B1b.mp4";
@@ -195,9 +200,19 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C2a1.mp4";
     }
     
+    // Show C2a2.mp4 for the C2a2 story node
+    if (story.id === 'C2a2') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C2a2.mp4";
+    }
+    
     // Show C2b.mp4 for the C2b story node
     if (story.id === 'C2b') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C2b.mp4";
+    }
+    
+    // Show C2b1.mp4 for the C2b1 story node
+    if (story.id === 'C2b1') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/C2b1.mp4";
     }
     
     // Default to opening.mp4 for all other nodes
