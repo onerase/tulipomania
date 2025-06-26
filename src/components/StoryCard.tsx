@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Flower2, ArrowRight } from 'lucide-react';
+import { Flower2, ArrowRight, RotateCcw } from 'lucide-react';
 import { StoryNode, Choice } from '../data/storyData';
 
 interface StoryCardProps {
@@ -11,6 +11,7 @@ interface StoryCardProps {
 export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onRestart }) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [pendingChoice, setPendingChoice] = useState<string | null>(null);
+  const [videoKey, setVideoKey] = useState(0);
 
   // Function to get the appropriate video based on story node
   const getVideoSource = () => {
@@ -252,17 +253,23 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
     }, 400);
   };
 
+  // Handle video replay
+  const handleVideoReplay = () => {
+    setVideoKey(prev => prev + 1);
+  };
+
   // Reset transition state when story changes (for external navigation)
   useEffect(() => {
     setIsTransitioning(false);
     setPendingChoice(null);
+    setVideoKey(prev => prev + 1); // Reset video when story changes
   }, [story.id]);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background Video */}
       <video
-        key={story.id} // Force video reload when story changes
+        key={`${story.id}-${videoKey}`} // Force video reload when story changes or replay is clicked
         autoPlay
         muted
         loop={shouldVideoLoop()}
@@ -271,6 +278,15 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       >
         <source src={getVideoSource()} type="video/mp4" />
       </video>
+      
+      {/* Video Replay Button */}
+      <button
+        onClick={handleVideoReplay}
+        className="absolute top-4 right-4 z-30 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all duration-200 hover:scale-110 backdrop-blur-sm border border-white/20 hover:border-white/40"
+        title="Replay video"
+      >
+        <RotateCcw className="w-4 h-4" />
+      </button>
       
       {/* Background overlay for readability - Enhanced darkness */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70 pointer-events-none z-10" />
