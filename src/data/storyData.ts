@@ -257,7 +257,7 @@ export const storyData: Record<string, StoryNode> = {
     text: 'Your bulbs bloom into a rainbow of hues, but in a market saturated with rare specimens, they hardly merit a second glance. As the prices climb ever higher, your modest holdings seem increasingly paltry, a child\'s posy in a field of hothouse exotics.',
     choices: [
       { id: 'C2b1', text: 'Sell everything to buy one last bulb, hoping for a rare blossom', nextNode: 'C2b1' },
-      { id: 'C2b2', text: 'Accept that you were wise to stay clear of the worst', nextNode: 'C2b2' }
+      { id: 'C2b2', text: 'Accept that you might not get rich in the Tulip craze', nextNode: 'C2b2' }
     ]
   },
 
