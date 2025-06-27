@@ -25,6 +25,21 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story, onChoiceSelect, onR
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/ending_philanthropy.mp4";
     }
     
+    // Show ending_preservation.mp4 for the preservation ending
+    if (story.id === 'ending_preservation') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/ending_preservation.mp4";
+    }
+    
+    // Show ending_renewal.mp4 for the renewal ending
+    if (story.id === 'ending_renewal') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/ending_renewal.mp4";
+    }
+    
+    // Show ending_reform.mp4 for the reform ending
+    if (story.id === 'ending_reform') {
+      return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/ending_reform.mp4";
+    }
+    
     // Show A1a2.mp4 for the A1a2 story node
     if (story.id === 'A1a2') {
       return "https://idgbpkjccaftgnibwkeg.supabase.co/storage/v1/object/public/video/A1a2.mp4";
