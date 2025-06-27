@@ -459,7 +459,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'B1a2',
     level: 4,
     title: 'The Mania',
-    text: 'The legal battle drags on for years, consuming what little wealth you have left. In the end, you win a pyrrhic victory, claiming a share of an estate already picked clean by other creditors.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
+    text: 'The legal battle drags on for years, consuming what little wealth you have left. In the end, you win a pyrrhic victory, claiming a share of an estate already picked clean by other creditors.',
     isEnding: true
   },
 
@@ -467,7 +467,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'B2a2',
     level: 4,
     title: 'The Mania',
-    text: 'Your campaign of whispers and innuendo backfires spectacularly. The rival growers unite against you, exposing your machinations to the authorities. Your reputation in ruins, you\'re banned from the tulip trade forever.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
+    text: 'Your campaign of whispers and innuendo backfires spectacularly. The rival growers unite against you, exposing your machinations to the authorities. Your reputation in ruins, you\'re banned from the tulip trade forever.',
     isEnding: true
   },
 
@@ -475,7 +475,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'C1a1',
     level: 4,
     title: 'The Mania',
-    text: 'You retreat to a modest farm in the countryside, far from the madness of the tulip trade. Working the soil with your own hands, you slowly rebuild your life and fortune through honest labor.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
+    text: 'You retreat to a modest farm in the countryside, far from the madness of the tulip trade. Working the soil with your own hands, you slowly rebuild your life and fortune through honest labor.',
     isEnding: true
   },
 
@@ -483,7 +483,15 @@ export const storyData: Record<string, StoryNode> = {
     id: 'C1b2',
     level: 4,
     title: 'The Mania',
-    text: 'The bottle becomes your constant companion, drowning your regrets in a haze of gin and despair. You become a cautionary tale, a broken man haunting the taverns with stories of what might have been.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
+    text: 'The bottle becomes your constant companion, drowning your regrets in a haze of gin and despair. You become a cautionary tale, a broken man haunting the taverns with stories of what might have been.',
+    isEnding: true
+  },
+
+  C2b2: {
+    id: 'C2b2',
+    level: 4,
+    title: 'The Mania',
+    text: 'You accept that you might not get rich in the Tulip craze. As the market reaches its peak and then crashes, you watch from the sidelines with a mixture of relief and regret. Your modest holdings lose value, but you avoid the complete ruin that befalls so many others.',
     isEnding: true
   },
 
@@ -512,7 +520,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'ending_preservation',
     level: 7,
     title: 'The Miser',
-    text: 'You retreat behind high walls and locked gates, deaf to the pleas of the suffering. Your fortune becomes a prison, isolating you from a world you no longer trust. You die alone, choking on your own bile, your riches little comfort in your final moments. History remembers you as a cautionary tale, a Midas who turned everything he touched to ashes.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
+    text: 'You retreat behind high walls and locked gates, deaf to the pleas of the suffering. Your fortune becomes a prison, isolating you from a world you no longer trust. You die alone, choking on your own bile, your riches little comfort in your final moments. History remembers you as a cautionary tale, a Midas who turned everything he touched to ashes.',
     isEnding: true
   },
 
@@ -520,7 +528,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'ending_renewal',
     level: 7,
     title: 'The Exile',
-    text: 'You board a ship bound for the East Indies, determined to start anew in a land untouched by tulip mania. In the teeming ports of Batavia and Malacca, you rebuild your fortune from scratch, trading in spices and silks. You never return to the Netherlands, but your legend lives on, a testament to the resilience of the human spirit.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
+    text: 'You board a ship bound for the East Indies, determined to start anew in a land untouched by tulip mania. In the teeming ports of Batavia and Malacca, you rebuild your fortune from scratch, trading in spices and silks. You never return to the Netherlands, but your legend lives on, a testament to the resilience of the human spirit.',
     isEnding: true
   },
 
@@ -528,7 +536,7 @@ export const storyData: Record<string, StoryNode> = {
     id: 'ending_reform',
     level: 7,
     title: 'The Revolutionary',
-    text: 'You rally the victims of the crash into a movement for radical change. In secret meetings and public squares, you rail against the greed of the tulip lords, the corruption of the system that enriched the few at the expense of the many. Your calls for redistribution and reform strike fear into the hearts of the powerful. Whether your revolution succeeds or fails, your name will echo through history as a champion of the downtrodden.\n\nAs the last petal falls from the tulip of your life, what remains is the legacy you\'ve left behind. Whether in the form of grand public works or quiet private deeds, in the laws of nations or the hearts of the humble, your choices have shaped the world in ways both seen and unseen. The flower that once drove men to madness may wilt and fade, but the seeds you\'ve planted will continue to grow, bearing fruit for generations to come. Such is the nature of history, and of the human spirit that shapes it. In the end, it is not the tulip that matters, but the gardener.',
+    text: 'You rally the victims of the crash into a movement for radical change. In secret meetings and public squares, you rail against the greed of the tulip lords, the corruption of the system that enriched the few at the expense of the many. Your calls for redistribution and reform strike fear into the hearts of the powerful. Whether your revolution succeeds or fails, your name will echo through history as a champion of the downtrodden.',
     isEnding: true
   }
 };
