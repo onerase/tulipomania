@@ -7,6 +7,7 @@ interface TitlePageProps {
 
 export const TitlePage: React.FC<TitlePageProps> = ({ onBegin }) => {
   const [showButton, setShowButton] = useState(false);
+  const [badgeAnimationCompleted, setBadgeAnimationCompleted] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -16,8 +17,23 @@ export const TitlePage: React.FC<TitlePageProps> = ({ onBegin }) => {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleBadgeAnimationEnd = () => {
+    setBadgeAnimationCompleted(true);
+  };
+
   return (
     <div className="min-h-screen relative overflow-hidden bg-black flex items-center justify-center">
+      {/* Made in Bolt Badge */}
+      <div className="fixed top-4 right-4 z-50">
+        <a href="https://bolt.new/?rid=os72mi" target="_blank" rel="noopener noreferrer" 
+           className="block transition-all duration-300 hover:shadow-2xl">
+          <img src="https://storage.bolt.army/white_circle_360x360.png" 
+               alt="Built with Bolt.new badge" 
+               className={`w-20 h-20 md:w-28 md:h-28 rounded-full shadow-lg bolt-badge bolt-badge-intro ${badgeAnimationCompleted ? 'animated' : ''}`}
+               onAnimationEnd={handleBadgeAnimationEnd} />
+        </a>
+      </div>
+
       {/* Background Video */}
       <video
         autoPlay
